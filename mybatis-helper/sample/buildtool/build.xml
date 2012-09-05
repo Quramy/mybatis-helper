@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="mybatis-addmapper test project" basedir="../" default="addmapper" xmlns:mybatis="com.example.mybatis.helper">
+	<path id="tasks">
+		<pathelement location="lib/mybatis-helper-1.0.0.jar" />
+	</path>
+
+	<typedef uri="com.example.mybatis.helper" resource="com/example/mybatis/helper/ant/antlib.xml" classpathref="tasks" />
+
+	<target name="addmapper" depends="">
+		<mybatis:addmapper srcfile="conf.xml" distfile="generated_conf.xml" verbose="on">
+			<mapperset dir="sample-resources">
+				<include name="mappers/*.xml" />
+			</mapperset>
+			<mapperset src="sample-lib/test.jar">
+				<include name="dao/*.xml" />
+			</mapperset>
+		</mybatis:addmapper>
+	</target>
+
+</project>

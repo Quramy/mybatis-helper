@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="mybatis-addmapper test project" default="all" xmlns:mybatis="com.example.mybatis.helper">
+	<path id="tasks" path="../../../target/classes" />
+
+	<typedef uri="com.example.mybatis.helper" resource="com/example/mybatis/helper/ant/antlib.xml" classpathref="tasks" />
+
+	<target name="case01" depends="">
+		<mybatis:addmapper srcfile="../resources/mybatis/configuration/conf_nomappers.xml" distfile="../../../target/conf1.xml" verbose="on">
+			<mapperset dir="../resources">
+				<include name="mybatis/mappers/*.xml" />
+			</mapperset>
+		</mybatis:addmapper>
+	</target>
+
+	<target name="case02" depends="">
+		<mybatis:addmapper srcfile="../resources/mybatis/configuration/conf.xml" distfile="../../../target/conf2.xml">
+			<mapperset src="../lib/test.jar">
+				<include name="dao/*.xml" />
+			</mapperset>
+		</mybatis:addmapper>
+	</target>
+
+
+	<target name="case03" depends="">
+		<mybatis:addmapper srcfile="../resources/mybatis/configuration/conf_nomappers.xml" distfile="../../../target/conf3.xml" verbose="on">
+			<mapperset dir="../resources" type="url">
+				<include name="mybatis/mappers/*.xml" />
+			</mapperset>
+		</mybatis:addmapper>
+	</target>
+
+	<target name="all" depends="case01,case02,case03">
+	</target>
+
+
+</project>
